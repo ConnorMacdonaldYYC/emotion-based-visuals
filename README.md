@@ -7,16 +7,18 @@
 Steps:
 
 1. Clone this repository
-2. *Optional:* Create a new virtual environment:
+2. *Windows only:* Make sure you have Visual Studio C++ installed.
+https://visualstudio.microsoft.com/vs/features/cplusplus/ 
+3. *Optional:* Create a new virtual environment:
    ```
    python -m venv .venv
    source .venv/bin/activate
    ```
-3. Install the required dependencies:
+4. Install the required dependencies:
    ```
    pip install -r requirements.txt
    ```
-4. Clone the latentblending repository:
+5. Clone the latentblending repository:
    - Option 1: Base Repo   
    ```
    git clone https://github.com/lunarring/latentblending.git
@@ -25,12 +27,12 @@ Steps:
    ```
    git clone https://github.com/ConnorMacdonaldYYC/latentblending.git
    ```
-5. Create a `.env` file in the project root and add your API key:
+6. Create a `.env` file in the project root and add your API key:
    ```
    cp temp.env .env
    ```
    *NOTE:* You will need an active anthropic API key to run this program. Reach out to c.s.macdonald@students.uu.nl for access.
-6. Download the audio files and place them in the `src/sounds/` directory.
+7. Download the audio files and place them in the `src/sounds/` directory.
 Files are located here: https://drive.google.com/drive/folders/1MvQvd-2zPVnOW3um2M0phpwjqw5pwihM?usp=sharing
 
 
