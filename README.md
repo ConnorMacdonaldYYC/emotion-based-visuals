@@ -29,6 +29,10 @@ Steps:
    ```
    cp temp.env .env
    ```
+   *NOTE:* You will need an active anthropic API key to run this program. Reach out to c.s.macdonald@students.uu.nl for access.
+6. Download the audio files and place them in the `src/sounds/` directory.
+Files are located here: https://drive.google.com/drive/folders/1MvQvd-2zPVnOW3um2M0phpwjqw5pwihM?usp=sharing
+
 
 ### Usage
 
