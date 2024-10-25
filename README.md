@@ -54,6 +54,7 @@ The idea behind this project was to create an interactive and personal way for p
 The implementation consists of 3 main components: emotion detection, image generation, and audio generation.
 
 1. Emotion Detection 
+
    This component takes a image and using a pre-trained vision transformer from Hugging Face ([vit-face-expression](https://huggingface.co/trpakov/vit-face-expression)), it attempts to classify the emotion being displayed by all the faces in the image. 
    The range of emotions detected are:
    - Angry
@@ -65,16 +66,18 @@ The implementation consists of 3 main components: emotion detection, image gener
    - Fear
      Every 15 seconds or so, a capture is made of the expressions on the users' faces. The emotions detected in this capture are then used for the following step.
 2. Image Generation and Blending
+
    This component takes the list of detected emotions and generates an image from this list. 
-   2.1 Prompt Generation
+   1. Prompt Generation
    Using Claude Sonnet 3.5, a descriptive prompt is generated for a Stable Diffusion model. Additionally this prompt was modifed by a model designed to enhance the descriptions ([MagicPrompt](https://huggingface.co/Gustavosta/MagicPrompt-Stable-Diffusion)).
-   2.2 Image Generation
+   2. Image Generation
    This image is then generated using a pre-trained Stable Diffusion model from Hugging Face ([stabilityai/sdxl-turbo](https://huggingface.co/stabilityai/sdxl-turbo)). 
-   2.3 Image Blending
+   3.  Image Blending
    The generated image is then blended with the previous image using the latent blending technique ([latentblending](https://github.com/lunarring/latentblending.git)). This technique merges the latent space of the two images to create new images that incorporate elements of both of the primary images. These new 'bridging' images enable a smooth transition between the two primary images.
 3. Audio Generation
+
    This component takes the most commonly detected emotion and randomly chooses 1 of 3 pre-generated audio clips per emotion to play.
-   These audio clips were generated using Stable Audio Open (https://huggingface.co/stabilityai/stable-audio-open-1.0) within ComfyUI (https://github.com/comfyanonymous/ComfyUI). When possible, the emotion was used in the text prompt, in the form of 'a quiet, [emotion] ambient track'. A notable exception was 'angry' not being used in the prompt, as this word caused the generated audio to become overblown and clipped out. All tracks are approximately 30 seconds long.
+   These audio clips were generated using [Stable Audio Open](https://huggingface.co/stabilityai/stable-audio-open-1.0) within [ComfyUI](https://github.com/comfyanonymous/ComfyUI). When possible, the emotion was used in the text prompt, in the form of 'a quiet, [emotion] ambient track'. A notable exception was 'angry' not being used in the prompt, as this word caused the generated audio to become overblown and clipped out. All tracks are approximately 30 seconds long.
 
 
 These components work together to create a loop in `main.py` that continuously takes in images and outputs new images, audio, and blends the new image with the previous one.
@@ -118,6 +121,8 @@ This project showcases an example of how generative AI can be used to create a m
 
 ### Work Breakdown
 Connor Macdonald: Emotion Detection, Image Generation, Image Blending
-Patrick: Project Presentation Video, Planning and testing of other ideas
+
+Patrick Junghenn: Project Presentation Video, Planning and testing of other ideas
+
 Tijmen Rothfusz: Audio Generation, Testing
 
