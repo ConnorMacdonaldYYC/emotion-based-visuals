@@ -49,7 +49,7 @@ python main.py
 ```
 
 ## Project Description
-The ideas behind this project was to create an interactive and personable way for people to engage with generative AI tools. This project uses images and sound to attempt to mirror the emotions detected on people faces. 
+The idea behind this project was to create an interactive and personal way for people to engage with generative AI tools. This project uses images and audio to attempt to mirror the emotions detected on the users' faces. Multiple faces can be recognised simultaneously, leading to multiple concurrent detected emotions being possible.
 
 The implementation consists of 3 main components: emotion detection, image generation, and audio generation.
 
@@ -63,17 +63,18 @@ The implementation consists of 3 main components: emotion detection, image gener
    - Neutral
    - Sad
    - Fear
+     Every 15 seconds or so, a capture is made of the expressions on the users' faces. The emotions detected in this capture are then used for the following step.
 2. Image Generation and Blending
-   This component takes a list of emotions and generates an image from this list. 
+   This component takes the list of detected emotions and generates an image from this list. 
    2.1 Prompt Generation
-   To do this claude sonnet 3.5 was used to generate a prompt for a stable diffusion model. Additionally this prompt was modifed by a model designed to enhance prompt description ([MagicPrompt](https://huggingface.co/Gustavosta/MagicPrompt-Stable-Diffusion)).
+   Using Claude Sonnet 3.5, a descriptive prompt is generated for a Stable Diffusion model. Additionally this prompt was modifed by a model designed to enhance the descriptions ([MagicPrompt](https://huggingface.co/Gustavosta/MagicPrompt-Stable-Diffusion)).
    2.2 Image Generation
-   This image was then generated using a pre-trained stable diffusion model from Hugging Face ([stabilityai/sdxl-turbo](https://huggingface.co/stabilityai/sdxl-turbo)). 
+   This image is then generated using a pre-trained Stable Diffusion model from Hugging Face ([stabilityai/sdxl-turbo](https://huggingface.co/stabilityai/sdxl-turbo)). 
    2.3 Image Blending
-   The generated image was then blended with the previous image using the latent blending technique ([latentblending](https://github.com/lunarring/latentblending.git)). This technique merges the latent space of the two images to create new images that are combination of the two. This enables a smooth transition between the two images.
+   The generated image is then blended with the previous image using the latent blending technique ([latentblending](https://github.com/lunarring/latentblending.git)). This technique merges the latent space of the two images to create new images that incorporate elements of both of the primary images. These new 'bridging' images enable a smooth transition between the two primary images.
 3. Audio Generation
-   This component takes the most commonly detected emotion and choose 1 of 3 pre-generated audio clips to play.
-   The audio clips were generated using Stable Audio Open (https://huggingface.co/stabilityai/stable-audio-open-1.0/tree/main) within ComfyUI. When possible, the emotion was used in the text prompt, in the form of 'a quiet, [emotion] ambient track'. A notable exception was 'angry' not being used in the prompt, as this word caused the generated audio to become overblown and clipped out. All tracks are approximately 30 seconds long.
+   This component takes the most commonly detected emotion and randomly chooses 1 of 3 pre-generated audio clips per emotion to play.
+   These audio clips were generated using Stable Audio Open (https://huggingface.co/stabilityai/stable-audio-open-1.0) within ComfyUI (https://github.com/comfyanonymous/ComfyUI). When possible, the emotion was used in the text prompt, in the form of 'a quiet, [emotion] ambient track'. A notable exception was 'angry' not being used in the prompt, as this word caused the generated audio to become overblown and clipped out. All tracks are approximately 30 seconds long.
 
 
 These components work together to create a loop in `main.py` that continuously takes in images and outputs new images, audio, and blends the new image with the previous one.
@@ -110,7 +111,7 @@ This project showcases an example of how generative AI can be used to create a m
 - [MagicPrompt](https://huggingface.co/Gustavosta/MagicPrompt-Stable-Diffusion) for prompt enhancement
 - [sdxl-turbo](https://huggingface.co/stabilityai/sdxl-turbo) for image generation
 - [latentblending](https://github.com/lunarring/latentblending.git) for image blending
-- [somthing]() for audio generation
+- [Stable Audio Open](https://huggingface.co/stabilityai/stable-audio-open-1.0) for audio generation
 
 #### AI Tools uses in creation of the project: 
 - Claude 3.5 Sonnet and the AI IDE Cursor were used to help create the code for this project
@@ -118,5 +119,5 @@ This project showcases an example of how generative AI can be used to create a m
 ### Work Breakdown
 Connor Macdonald: Emotion Detection, Image Generation, Image Blending
 Patrick: Project Presentation Video, Planning and testing of other ideas
-Tijmen: Audio Generation, Testing
+Tijmen Rothfusz: Audio Generation, Testing
 
