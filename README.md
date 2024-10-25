@@ -73,7 +73,7 @@ The implementation consists of 3 main components: emotion detection, image gener
    The generated image was then blended with the previous image using the latent blending technique ([latentblending](https://github.com/lunarring/latentblending.git)). This technique merges the latent space of the two images to create new images that are combination of the two. This enables a smooth transition between the two images.
 3. Audio Generation
    This component takes the most commonly detected emotion and choose 1 of 3 pre-generated audio clips to play.
-   The audio clips are generated -------
+   The audio clips were generated using Stable Audio Open (https://huggingface.co/stabilityai/stable-audio-open-1.0/tree/main) within ComfyUI. When possible, the emotion was used in the text prompt, in the form of 'a quiet, [emotion] ambient track'. A notable exception was 'angry' not being used in the prompt, as this word caused the generated audio to become overblown and clipped out. All tracks are approximately 30 seconds long.
 
 
 These components work together to create a loop in `main.py` that continuously takes in images and outputs new images, audio, and blends the new image with the previous one.
