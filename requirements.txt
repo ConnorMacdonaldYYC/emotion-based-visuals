@@ -1,9 +1,0 @@
-transformers
-torch
-torchvision
-opencv-python
-dlib
-numpy
-anthropic
-diffusers
-accelerate
